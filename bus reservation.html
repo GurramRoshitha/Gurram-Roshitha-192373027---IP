@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CSS Lab Demo - Blossom Theme</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Cambria,serif}
+body{background:linear-gradient(135deg,#ffe6f2,#f8ecff,#fffafc);color:#444}
+header{background:#fff;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);position:sticky;top:0}
+nav a{text-decoration:none;margin:0 12px;color:#d63384;font-weight:bold}
+section{padding:50px 20px;text-align:center}
+h1,h2{color:#d63384;margin-bottom:15px}
+.booking{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;background:#fff;padding:20px;border-radius:15px;max-width:900px;margin:20px auto;box-shadow:0 5px 15px rgba(0,0,0,.12)}
+.booking input,.booking select,.booking button{padding:10px;border-radius:8px;border:1px solid #f4a6c1}
+.booking button{background:#ff69b4;color:#fff;cursor:pointer}
+.cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:20px}
+.card{width:170px;height:170px;background:#ffb6d5;border-radius:18px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;transition:.5s}
+.scale:hover{transform:scale(1.15)}
+.rotate:hover{transform:rotate(15deg)}
+.move:hover{transform:translateY(-15px)}
+.scene{height:320px;position:relative;overflow:hidden}
+.sun{width:80px;height:80px;background:gold;border-radius:50%;position:absolute;left:50px;top:20px;animation:shine 2s infinite alternate}
+.cloud{position:absolute;top:40px;left:-180px;width:150px;height:60px;background:#fff;border-radius:40px;animation:cloud 10s linear infinite}
+.cloud:before,.cloud:after{content:'';position:absolute;background:#fff;border-radius:50%}
+.cloud:before{width:60px;height:60px;left:20px;top:-20px}
+.cloud:after{width:70px;height:70px;left:70px;top:-30px}
+.flower{font-size:80px;position:absolute;bottom:20px;left:50%;transform:translateX(-50%);animation:bloom 2s infinite alternate}
+.butterfly{font-size:40px;position:absolute;left:-50px;top:180px;animation:fly 8s linear infinite}
+@keyframes shine{to{transform:scale(1.2);box-shadow:0 0 40px gold}}
+@keyframes cloud{to{left:110%}}
+@keyframes bloom{to{transform:translateX(-50%) scale(1.2)}}
+@keyframes fly{0%{left:-50px}50%{top:120px}100%{left:110%}}
+footer{background:#d63384;color:#fff;padding:18px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+<h1>🌸 Blossom CSS Laboratory 🌸</h1>
+<nav>
+<a href="#bus">Bus Reservation</a>
+<a href="#transition">Transition & Transform</a>
+<a href="#animation">Animations</a>
+</nav>
+</header>
+
+<section id="bus">
+<h2>Colorful Bus Reservation Homepage</h2>
+<div class="booking">
+<input placeholder="From">
+<input placeholder="To">
+<input type="date">
+<select><option>Passengers</option><option>1</option><option>2</option><option>3</option></select>
+<button>Search Bus</button>
+</div>
+</section>
+
+<section id="transition">
+<h2>Transition & Transform Demo</h2>
+<p>Hover over the cards.</p>
+<div class="cards">
+<div class="card scale">Scale</div>
+<div class="card rotate">Rotate</div>
+<div class="card move">Translate</div>
+</div>
+</section>
+
+<section id="animation">
+<h2>CSS Animation Demo</h2>
+<div class="scene">
+<div class="sun"></div>
+<div class="cloud"></div>
+<div class="butterfly">🦋</div>
+<div class="flower">🌸</div>
+</div>
+</section>
+
+<footer>© 2026 Blossom Theme Lab Website</footer>
+</body>
+</html>
