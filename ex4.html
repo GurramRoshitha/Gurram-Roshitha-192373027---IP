@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RailReserve | Train Booking</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #1d4ed8;
+      --teal: #0f766e;
+      --orange: #f97316;
+      --text: #162a3a;
+      --bg: #f8fafc;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f4f9ff, #f8fafc 45%, #fff8ef);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    header {
+      background: rgba(255,255,255,0.94);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .nav { max-width: 1200px; margin: auto; padding: 16px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .brand { font-size: 1.35rem; font-weight: 700; color: var(--blue); }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding: 8px 12px; border-radius: 999px; transition: 0.3s; }
+    nav a:hover { background: #e8f2ff; color: var(--navy); }
+
+    .hero { max-width: 1200px; margin: 0 auto; padding: 60px 24px 40px; display:grid; grid-template-columns: 1.1fr 0.9fr; gap:24px; align-items:center; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 12px; }
+    .hero p { font-size: 1.05rem; color: #55708a; margin-bottom: 20px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { padding: 12px 18px; border:none; border-radius: 999px; background: linear-gradient(135deg, var(--blue), var(--teal)); color:white; cursor:pointer; font-weight:600; }
+    .btn.secondary { background: linear-gradient(135deg, var(--orange), #fb923c); }
+
+    .panel { background: var(--card); border-radius: 24px; padding: 20px; box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+    .search-form { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .search-form input, .search-form select { padding: 12px; border: 1px solid #dce8f5; border-radius: 12px; font: inherit; }
+    .search-form .full { grid-column: 1 / -1; }
+
+    section { max-width: 1200px; margin: 0 auto; padding: 36px 24px; }
+    .section-title { font-size:1.6rem; color: var(--navy); margin-bottom: 16px; }
+    .cards { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    .card { background: var(--card); border-radius: 20px; padding: 18px; box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+    .card h3 { color: var(--blue); margin-bottom: 8px; }
+    .card ul { padding-left: 18px; color:#55708a; }
+    .price { color: var(--orange); font-weight:700; margin-top:8px; }
+    .stats { display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:14px; margin-top:20px; }
+    .stat { background: white; border-radius:16px; padding: 16px; text-align:center; box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
+    .stat strong { display:block; font-size:1.2rem; color: var(--blue); }
+    .reviews { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:16px; }
+    .review { background: var(--card); border-radius:18px; padding:16px; box-shadow:0 8px 20px rgba(0,0,0,0.05); }
+    footer { background: #0f172a; color:#e2e8f0; padding:24px; text-align:center; margin-top:24px; }
+
+    @media (max-width: 900px) { .hero, .cards, .reviews, .stats { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .nav { justify-content:center; } .search-form { grid-template-columns:1fr; } .hero { padding-top: 36px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">  RailReserve</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">Passenger</a>
+        <a href="blossom3.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Book train tickets with real-time seat availability and PNR tracking.</h1>
+        <p>Search trains by route, date, time and class, then manage your reservations, payments, and ticket history from one responsive dashboard.</p>
+        <div class="actions">
+          <a class="btn" href="blossom2.html">Passenger Dashboard</a>
+          <a class="btn secondary" href="blossom3.html">Admin Panel</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>120+</strong><span>Routes Covered</span></div>
+          <div class="stat"><strong>Live</strong><span>Seat Updates</span></div>
+          <div class="stat"><strong>Secure</strong><span>Payments</span></div>
+          <div class="stat"><strong>PNR</strong><span>Status Check</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 class="section-title">Search Available Trains</h3>
+        <form class="search-form">
+          <input type="text" placeholder="From station" />
+          <input type="text" placeholder="To station" />
+          <input type="date" />
+          <select>
+            <option>Preferred Departure Time</option>
+            <option>Early Morning</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+          </select>
+          <select>
+            <option>Select Class</option>
+            <option>Economy</option>
+            <option>Business</option>
+            <option>First Class</option>
+            <option>Sleeper</option>
+          </select>
+          <button class="btn full" type="button">Check Availability</button>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Train Classes & Fare Rules</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Economy Class</h3>
+          <p>Affordable travel with reserved seating. Ideal for short to medium-distance journeys.</p>
+          <div class="price">From $12</div>
+          <ul>
+            <li>Reserved seat</li>
+            <li>Zone-based fares</li>
+            <li>Flexible cancellation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Business Class</h3>
+          <p>Spacious seating, priority boarding and faster confirmation for value-conscious travelers.</p>
+          <div class="price">From $28</div>
+          <ul>
+            <li>Premium comfort</li>
+            <li>Live seat availability</li>
+            <li>Payment gateway supported</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>First Class</h3>
+          <p>Premium carriage with complimentary services, excellent for long-distance and executive travel.</p>
+          <div class="price">From $45</div>
+          <ul>
+            <li>Private compartments</li>
+            <li>Higher refundable percentage</li>
+            <li>Confirmed PNR guarantee</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Booking Workflow</h2>
+      <div class="reviews">
+        <div class="review">
+          <strong>1. Login or register</strong>
+          <p>Sign in using valid credentials. The passenger dashboard collects journey, passenger, origin, destination and class details.</p>
+        </div>
+        <div class="review">
+          <strong>2. Select trains and seats</strong>
+          <p>The system shows the available train list, seat availability and fare details for the chosen route and date.</p>
+        </div>
+        <div class="review">
+          <strong>3. Pay and confirm</strong>
+          <p>Choose online or offline payment. After successful payment, the system generates the ticket and assigns a unique PNR number.</p>
+        </div>
+        <div class="review">
+          <strong>4. Track and manage</strong>
+          <p>Passengers can check PNR status, view booking history, print tickets, or request cancellations with refund processing.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>RailReserve © 2026 | Train reservation system with route search, PNR tracking, fare management, refund rules, and admin controls.</p>
+  </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RailReserve | Passenger Dashboard</title>
+  <style>
+    :root { --navy: #0f172a; --blue:#2563eb; --teal:#0f766e; --orange:#f59e0b; --text:#183047; --bg:#f8fafc; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f8fafc, #eef5fb); color: var(--text); min-height:100vh; }
+    a { text-decoration:none; color:inherit; }
+    header { background:rgba(255,255,255,0.95); box-shadow:0 4px 16px rgba(0,0,0,0.06); position:sticky; top:0; }
+    .nav { max-width:1200px; margin:auto; padding:18px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+    .brand { color:var(--blue); font-weight:800; font-size:1.35rem; }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding:10px 14px; border-radius:999px; transition:0.25s; }
+    nav a:hover { background:#e2edff; color:var(--navy); }
+
+    main { max-width:1200px; margin:0 auto; padding:32px 24px 50px; }
+    .hero { background:white; border-radius:24px; padding:28px 30px; box-shadow:0 14px 32px rgba(15, 23, 42, 0.06); margin-bottom:24px; }
+    .hero h1 { color:var(--navy); font-size:clamp(2rem,4vw,2.8rem); margin-bottom:12px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    .card { background:white; border-radius:20px; padding:18px; box-shadow:0 10px 24px rgba(0,0,0,0.06); }
+    .card h2 { color:var(--blue); margin-bottom:14px; }
+    form { display:grid; gap:14px; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:14px; }
+    input, select, textarea { width:100%; padding:14px; border:1px solid #d3e2f0; border-radius:14px; font:inherit; background:#f8fafc; }
+    button { padding:14px 18px; border:none; border-radius:999px; background:linear-gradient(135deg, var(--blue), var(--teal)); color:white; font-weight:700; cursor:pointer; }
+    .outline-btn { background:#ffffff; border:1px solid #cbd5e1; color:var(--navy); }
+    .item { background:#f8fafc; border-radius:16px; padding:16px; border:1px solid #e2e8f0; margin-bottom:14px; }
+    .item strong { display:block; margin-bottom:10px; color:var(--navy); }
+    .pill { display:inline-flex; align-items:center; gap:8px; background:#e0f2fe; color:#0c4a6e; padding:6px 10px; border-radius:999px; font-size:0.95rem; }
+    .notice { background:#fffbeb; border:1px solid #f5d3a8; border-radius:16px; padding:16px; color:#6b4226; }
+    .section { margin-top:24px; }
+    .section h3 { margin-bottom:14px; color:var(--navy); }
+
+    @media (max-width: 900px) { .grid, .two-col { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🚆 RailReserve</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">Dashboard</a>
+        <a href="blossom3.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Passenger dashboard for booking, PNR status, and ticket management.</h1>
+      <p>Login with valid credentials, provide journey details, select seats, and monitor your PNR, booking history, and cancellations.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Booking and Passenger Details</h2>
+        <form>
+          <div class="two-col">
+            <input type="text" placeholder="Full name" value="Sara Khan" />
+            <input type="email" placeholder="Email address" value="sara@example.com" />
+          </div>
+          <div class="two-col">
+            <input type="text" placeholder="Phone number" value="+1 555 234 678" />
+            <input type="date" />
+          </div>
+          <div class="two-col">
+            <select>
+              <option>Origin station</option>
+              <option>Karachi</option>
+              <option>Lahore</option>
+              <option>Islamabad</option>
+            </select>
+            <select>
+              <option>Destination station</option>
+              <option>Lahore</option>
+              <option>Quetta</option>
+              <option>Peshawar</option>
+            </select>
+          </div>
+          <div class="two-col">
+            <select>
+              <option>Ticket class</option>
+              <option>Economy</option>
+              <option>Business</option>
+              <option>First Class</option>
+              <option>Sleeper</option>
+            </select>
+            <select>
+              <option>Payment mode</option>
+              <option>Online</option>
+              <option>Offline</option>
+            </select>
+          </div>
+          <textarea rows="4" placeholder="Passenger names and special requirements"></textarea>
+          <button type="button">Book Ticket</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>My Reservations</h2>
+        <div class="item">
+          <strong>PNR 2784123056</strong>
+          <p>Karachi → Lahore • 12 Jul 2026 • Business Class</p>
+          <span class="pill">Confirmed</span>
+          <p>Fare: $28 • Seat: 12B</p>
+        </div>
+        <div class="item">
+          <strong>PNR 3210476892</strong>
+          <p>Islamabad → Peshawar • 02 Jun 2026 • Economy Class</p>
+          <span class="pill">Completed</span>
+          <p>Fare: $15 • Printed ticket available</p>
+        </div>
+        <div class="item">
+          <strong>PNR 9250734180</strong>
+          <p>Quetta → Multan • 18 Apr 2026 • Sleeper</p>
+          <span class="pill">Cancelled</span>
+          <p>Refund: 75% processed</p>
+        </div>
+
+        <div class="section">
+          <h3>Upcoming Actions</h3>
+          <div class="item">
+            <strong>Print Ticket</strong>
+            <p>Print your confirmed ticket directly from the dashboard after payment.</p>
+          </div>
+          <div class="item">
+            <strong>Request Cancellation</strong>
+            <p>Cancel by PNR and receive the refundable amount based on reservation rules.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RailReserve | Admin Control Panel</title>
+  <style>
+    :root { --navy:#102a43; --blue:#2563eb; --teal:#0f766e; --orange:#f97316; --text:#1f2937; --bg:#f8fafc; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Segoe UI", Tahoma, sans-serif; background:linear-gradient(135deg,#f8fafc,#eef4ff); color:var(--text); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    header { background:rgba(255,255,255,0.97); box-shadow:0 6px 24px rgba(16, 42, 67, 0.08); position:sticky; top:0; }
+    .nav { max-width:1200px; margin:auto; padding:18px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+    .brand { color:var(--blue); font-weight:800; font-size:1.35rem; }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding:10px 14px; border-radius:999px; transition:0.25s; }
+    nav a:hover { background:#dbeafe; color:var(--navy); }
+    main { max-width:1200px; margin:0 auto; padding:30px 24px 50px; }
+    .hero { background:white; border-radius:24px; padding:26px; box-shadow:0 16px 36px rgba(16, 42, 67, 0.07); margin-bottom:22px; }
+    .hero h1 { color:var(--navy); margin-bottom:10px; }
+    .hero p { color:#475569; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:20px; }
+    .card { background:white; border-radius:22px; padding:22px; box-shadow:0 16px 32px rgba(16, 42, 67, 0.06); }
+    .card h2 { color:var(--blue); margin-bottom:14px; }
+    .list { display:grid; gap:12px; }
+    .item { border:1px solid #dbeafe; border-radius:14px; padding:16px; }
+    .pill { display:inline-block; background:#e0f2fe; color:var(--blue); padding:6px 10px; border-radius:999px; font-size:0.95rem; margin-top:8px; }
+    .pages { display:grid; gap:12px; }
+    .page-item { display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid #eef4fb; }
+    .btn { border:none; border-radius:999px; padding:10px 16px; background:linear-gradient(135deg,var(--blue),var(--teal)); color:white; cursor:pointer; }
+    .panel { margin-top:16px; padding:18px; border-radius:18px; background:#f8fafc; border:1px solid #dbeafe; }
+    .panel h3 { margin-bottom:12px; color:var(--navy); }
+    .panel form { display:grid; gap:12px; }
+    .panel input, .panel select, .panel textarea { width:100%; padding:12px 14px; border-radius:12px; border:1px solid #cbd5e1; font:inherit; background:#ffffff; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:12px; }
+    .highlight { color:var(--orange); font-weight:700; }
+    @media (max-width: 900px) { .grid, .two-col { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🚆 RailReserve</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">Passenger</a>
+        <a href="blossom3.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Admin Control Center</h1>
+      <p>Manage train details, seat availability, fare rules, refunds, and user accounts in one secure interface.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Train & Schedule Management</h2>
+        <div class="list">
+          <div class="item">
+            <strong>Express 101</strong>
+            <div class="pill">Karachi → Lahore • 06:00 • 2AC • 72 seats</div>
+          </div>
+          <div class="item">
+            <strong>Intercity 204</strong>
+            <div class="pill">Islamabad → Peshawar • 10:30 • 1AC • 46 seats</div>
+          </div>
+          <div class="item">
+            <strong>Coastal 322</strong>
+            <div class="pill">Quetta → Multan • 16:45 • Sleeper • 84 seats</div>
+          </div>
+          <div class="item">
+            <strong>Metro 450</strong>
+            <div class="pill">Lahore → Rawalpindi • 08:15 • Economy • 120 seats</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Update Train Details</h3>
+          <form>
+            <input type="text" placeholder="Train name or number" />
+            <input type="text" placeholder="Origin station" />
+            <input type="text" placeholder="Destination station" />
+            <select>
+              <option>Class type</option>
+              <option>Economy</option>
+              <option>Business</option>
+              <option>First Class</option>
+              <option>Sleeper</option>
+            </select>
+            <div class="two-col">
+              <input type="time" />
+              <input type="number" placeholder="Seat count" min="0" />
+            </div>
+            <button type="button" class="btn">Save Schedule</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Fare & Refund Management</h2>
+        <div class="panel">
+          <h3>Fare Settings</h3>
+          <form>
+            <select>
+              <option>Zone</option>
+              <option>Zone A</option>
+              <option>Zone B</option>
+              <option>Zone C</option>
+            </select>
+            <select>
+              <option>Class</option>
+              <option>Economy</option>
+              <option>Business</option>
+              <option>First Class</option>
+              <option>Sleeper</option>
+            </select>
+            <input type="date" placeholder="Effective date" />
+            <input type="number" placeholder="Fare amount" />
+            <button type="button" class="btn">Update Fare</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Refund Rules</h3>
+          <form>
+            <input type="date" placeholder="Reservation date" />
+            <input type="number" placeholder="Refund percentage" />
+            <textarea rows="3" placeholder="Refund policy notes"></textarea>
+            <button type="button" class="btn">Save Rule</button>
+          </form>
+        </div>
+
+        <div class="pages">
+          <div class="page-item"><span>Manage Train Availability</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>View Payment Records</span><button class="btn">Open</button></div>
+          <div class="page-item"><span>Approve Cancellation Refunds</span><button class="btn">Review</button></div>
+          <div class="page-item"><span>Manage Users and Accounts</span><button class="btn">Open</button></div>
+        </div>
+        <p class="highlight">Admins can control train inventory, fare zones, PNR mapping, and refund workflows centrally.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
