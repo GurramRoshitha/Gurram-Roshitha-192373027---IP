@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blossom Hotel | Luxury Online Booking</title>
+  <style>
+    :root {
+      --pink: #d63384;
+      --pink-dark: #b4236e;
+      --pink-soft: #ffe6f0;
+      --text: #4d3a46;
+      --bg: #fffafc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Cambria, serif;
+      background: linear-gradient(135deg, #fff7fb, #fef2f7 30%, #f6f1ff);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { width: 100%; display: block; border-radius: 16px; }
+
+    header {
+      background: rgba(255,255,255,0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand { font-size: 1.4rem; font-weight: 700; color: var(--pink); }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; }
+    nav a { padding: 8px 12px; border-radius: 999px; transition: 0.3s; }
+    nav a:hover { background: var(--pink-soft); color: var(--pink-dark); }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 40px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); color: var(--pink-dark); margin-bottom: 12px; }
+    .hero p { font-size: 1.05rem; margin-bottom: 20px; color: #6f5d67; }
+    .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), #ff6fa1);
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(214, 51, 132, 0.25); }
+
+    .panel {
+      background: white;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .search-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .search-form input, .search-form select { padding: 12px; border: 1px solid #e9d6e2; border-radius: 12px; font: inherit; }
+    .search-form .full { grid-column: 1 / -1; }
+
+    section { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    .section-title { font-size: 1.7rem; color: var(--pink-dark); margin-bottom: 16px; }
+    .grid { display: grid; gap: 18px; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { background: white; border-radius: 20px; padding: 18px; box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+    .card h3 { color: var(--pink-dark); margin-bottom: 8px; }
+    .card ul { padding-left: 18px; color: #6f5d67; }
+    .price { color: var(--pink); font-weight: 700; margin-top: 8px; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+    .stat { background: white; border-radius: 16px; padding: 18px; text-align: center; box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
+    .stat strong { display: block; font-size: 1.3rem; color: var(--pink); }
+
+    .reviews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .review { background: white; border-radius: 18px; padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+
+    footer { background: #2c1426; color: #f8eaf2; padding: 24px; text-align: center; margin-top: 30px; }
+
+    @media (max-width: 900px) {
+      .hero, .cards, .reviews, .stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav { justify-content: center; }
+      .search-form { grid-template-columns: 1fr; }
+      .hero { padding-top: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🌸 Blossom Hotel</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">My Booking</a>
+        <a href="blossom3.html">Admin Panel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Reserve a peaceful stay with comfort, style, and easy booking.</h1>
+        <p>Discover elegant rooms, flexible check-in options, and fast secure payments for your next getaway or business trip.</p>
+        <div class="actions">
+          <a class="btn" href="blossom2.html">Book a Room</a>
+          <a class="btn" href="blossom3.html">Explore Admin Tools</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>4</strong><span>Room Types</span></div>
+          <div class="stat"><strong>98%</strong><span>Guest Satisfaction</span></div>
+          <div class="stat"><strong>24/7</strong><span>Support</span></div>
+          <div class="stat"><strong>4.8★</strong><span>Reviews</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 class="section-title">Search Availability</h3>
+        <form class="search-form">
+          <input type="text" placeholder="Destination" />
+          <input type="date" />
+          <input type="date" />
+          <select>
+            <option>Guests</option>
+            <option>1 Guest</option>
+            <option>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4 Guests</option>
+          </select>
+          <button class="btn full" type="button">Check Rooms</button>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Featured Rooms</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Deluxe Room</h3>
+          <p>Comfortable city-view rooms with breakfast, Wi-Fi, and king-size bed.</p>
+          <div class="price">From $120/night</div>
+          <ul>
+            <li>Free breakfast</li>
+            <li>Free cancellation</li>
+            <li>Air conditioning</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Executive Suite</h3>
+          <p>Ideal for business travelers with lounge access and premium amenities.</p>
+          <div class="price">From $180/night</div>
+          <ul>
+            <li>Workspace</li>
+            <li>Late checkout</li>
+            <li>Mini bar</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Family Room</h3>
+          <p>Spacious stays for families with extra beds and kid-friendly services.</p>
+          <div class="price">From $165/night</div>
+          <ul>
+            <li>2 queen beds</li>
+            <li>Play area access</li>
+            <li>Family breakfast</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Guest Reviews</h2>
+      <div class="reviews">
+        <div class="review">
+          <strong>“Amazing service and spotless rooms.”</strong>
+          <p>We booked for a weekend getaway and loved the fast support and comfortable stay.</p>
+        </div>
+        <div class="review">
+          <strong>“Easy payment process and clear booking updates.”</strong>
+          <p>The dashboard made managing our stay stress-free from reservation to checkout.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Blossom Hotel © 2026 | Room booking, reviews, and admin management in one place.</p>
+  </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blossom Hotel | User Booking Dashboard</title>
+  <style>
+    :root { --pink: #d63384; --pink-dark: #b4236e; --pink-soft: #ffe6f0; --text:#4d3a46; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Cambria, serif; background: linear-gradient(135deg,#fff8fb,#fdf2f7); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    header { background: rgba(255,255,255,0.95); box-shadow: 0 4px 16px rgba(0,0,0,0.06); position: sticky; top: 0; }
+    .nav { max-width: 1200px; margin: auto; padding: 16px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .brand { color: var(--pink); font-weight:700; font-size:1.3rem; }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding:8px 12px; border-radius:999px; transition:0.3s; }
+    nav a:hover { background: var(--pink-soft); color: var(--pink-dark); }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 30px 24px 50px; }
+    .hero { background: white; border-radius:24px; padding:22px; box-shadow:0 10px 24px rgba(0,0,0,0.06); margin-bottom:20px; }
+    .hero h1 { color: var(--pink-dark); margin-bottom:8px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    .card { background:white; border-radius:20px; padding:18px; box-shadow:0 10px 24px rgba(0,0,0,0.06); }
+    .card h2 { color: var(--pink-dark); margin-bottom:12px; }
+    form { display:grid; gap:12px; }
+    input, select, textarea { padding:12px; border:1px solid #f0dce5; border-radius:12px; font:inherit; }
+    .btn { border:none; border-radius:999px; padding:12px 16px; background:linear-gradient(135deg,var(--pink),#ff6fa1); color:white; cursor:pointer; font-weight:600; }
+    .history { margin-top:16px; display:grid; gap:10px; }
+    .item { border-left:4px solid var(--pink); padding:10px 12px; background:#fff8fc; border-radius:8px; }
+    .pill { display:inline-block; background:var(--pink-soft); color:var(--pink-dark); padding:4px 8px; border-radius:999px; font-size:0.9rem; margin-top:6px; }
+    .notice { background:#fff7f2; border:1px solid #f5d9c4; padding:12px; border-radius:12px; margin-top:14px; }
+
+    @media (max-width: 800px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🌸 Blossom Hotel</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">My Booking</a>
+        <a href="blossom3.html">Admin Panel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome back, Sara!</h1>
+      <p>Manage your room bookings, update preferences, and review your stay history in one easy dashboard.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Profile & Booking Details</h2>
+        <form>
+          <input type="text" placeholder="Full name" value="Sara Khan" />
+          <input type="email" placeholder="Email" value="sara@example.com" />
+          <input type="text" placeholder="Phone" value="+1 555 234 678" />
+          <input type="date" />
+          <select>
+            <option>Select room type</option>
+            <option>Deluxe Room</option>
+            <option>Executive Suite</option>
+            <option>Family Room</option>
+          </select>
+          <textarea rows="3" placeholder="Special requests"></textarea>
+          <button class="btn" type="button">Confirm Booking</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Booking History</h2>
+        <div class="history">
+          <div class="item">
+            <strong>Deluxe Room • 12 Jul 2026</strong>
+            <div class="pill">Checked In</div>
+          </div>
+          <div class="item">
+            <strong>Executive Suite • 02 Jun 2026</strong>
+            <div class="pill">Completed</div>
+          </div>
+          <div class="item">
+            <strong>Family Room • 18 Apr 2026</strong>
+            <div class="pill">Cancelled</div>
+          </div>
+        </div>
+        <div class="notice">
+          You can change or cancel your reservation up to 3 days before arrival. Availability is updated instantly for all room types.
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blossom Hotel | Admin Control Panel</title>
+  <style>
+    :root { --pink:#d63384; --pink-dark:#b4236e; --text:#4d3a46; --bg:#fffafc; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family: Cambria, serif; background: linear-gradient(135deg,#fff8fb,#fef2f7); color:var(--text); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    header { background:rgba(255,255,255,0.95); box-shadow:0 4px 16px rgba(0,0,0,0.06); position:sticky; top:0; }
+    .nav { max-width:1200px; margin:auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .brand { color:var(--pink); font-weight:700; font-size:1.3rem; }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding:8px 12px; border-radius:999px; transition:0.3s; }
+    nav a:hover { background:#ffe6f0; color:var(--pink-dark); }
+    main { max-width:1200px; margin:0 auto; padding:30px 24px 50px; }
+    .hero { background:white; border-radius:24px; padding:22px; box-shadow:0 10px 24px rgba(0,0,0,0.06); margin-bottom:20px; }
+    .hero h1 { color:var(--pink-dark); margin-bottom:8px; }
+    .grid { display:grid; gap:18px; grid-template-columns: 1fr 1fr; }
+    .card { background:white; border-radius:20px; padding:18px; box-shadow:0 10px 24px rgba(0,0,0,0.06); }
+    .card h2 { color:var(--pink-dark); margin-bottom:10px; }
+    .room-list { display:grid; gap:10px; }
+    .room-item { border:1px solid #f1dce4; border-radius:12px; padding:12px; }
+    .pill { display:inline-block; background:#ffe6f0; color:var(--pink-dark); padding:4px 8px; border-radius:999px; font-size:0.9rem; margin-top:6px; }
+    .pages { display:grid; gap:10px; }
+    .page-item { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #f4e7ee; }
+    .btn { border:none; border-radius:999px; padding:10px 14px; background:linear-gradient(135deg,var(--pink),#ff6fa1); color:white; cursor:pointer; }
+
+    @media (max-width: 800px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🌸 Blossom Hotel</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">My Booking</a>
+        <a href="blossom3.html">Admin Panel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Administrator Control Panel</h1>
+      <p>Update room quantities, revise prices, manage customer bookings, and edit static hotel pages from a single place.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Room Management</h2>
+        <div class="room-list">
+          <div class="room-item">
+            <strong>Deluxe Room</strong>
+            <div class="pill">Qty: 12 • Price: $120</div>
+          </div>
+          <div class="room-item">
+            <strong>Executive Suite</strong>
+            <div class="pill">Qty: 6 • Price: $180</div>
+          </div>
+          <div class="room-item">
+            <strong>Family Room</strong>
+            <div class="pill">Qty: 8 • Price: $165</div>
+          </div>
+          <div class="room-item">
+            <strong>Presidential Suite</strong>
+            <div class="pill">Qty: 3 • Price: $260</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Static Pages & Booking Actions</h2>
+        <div class="pages">
+          <div class="page-item"><span>Room Information</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>About Us</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>Contact Us</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>Customer Service Q&amp;A</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>Travel Guide & Privacy Policy</span><button class="btn">Edit</button></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
