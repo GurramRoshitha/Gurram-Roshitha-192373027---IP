@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityRide | Bus Ticket Booking</title>
+  <style>
+    :root {
+      --navy: #14213d;
+      --blue: #1d4ed8;
+      --teal: #14b8a6;
+      --orange: #f59e0b;
+      --text: #243447;
+      --bg: #f7fbff;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8fbff, #eef7ff 40%, #fef7e6);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    header {
+      background: rgba(255,255,255,0.94);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .nav { max-width: 1200px; margin: auto; padding: 16px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .brand { font-size: 1.35rem; font-weight: 700; color: var(--blue); }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding: 8px 12px; border-radius: 999px; transition: 0.3s; }
+    nav a:hover { background: #e8f2ff; color: var(--navy); }
+
+    .hero { max-width: 1200px; margin: 0 auto; padding: 60px 24px 40px; display:grid; grid-template-columns: 1.1fr 0.9fr; gap:24px; align-items:center; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 12px; }
+    .hero p { font-size: 1.05rem; color: #55708a; margin-bottom: 20px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { padding: 12px 18px; border:none; border-radius: 999px; background: linear-gradient(135deg, var(--blue), var(--teal)); color:white; cursor:pointer; font-weight:600; }
+    .btn.secondary { background: linear-gradient(135deg, var(--orange), #fb923c); }
+
+    .panel { background: var(--card); border-radius: 24px; padding: 20px; box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+    .search-form { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .search-form input, .search-form select { padding: 12px; border: 1px solid #dce8f5; border-radius: 12px; font: inherit; }
+    .search-form .full { grid-column: 1 / -1; }
+
+    section { max-width: 1200px; margin: 0 auto; padding: 36px 24px; }
+    .section-title { font-size:1.6rem; color: var(--navy); margin-bottom: 16px; }
+    .cards { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    .card { background: var(--card); border-radius: 20px; padding: 18px; box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+    .card h3 { color: var(--blue); margin-bottom: 8px; }
+    .card ul { padding-left: 18px; color:#55708a; }
+    .price { color: var(--orange); font-weight:700; margin-top:8px; }
+    .stats { display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:14px; margin-top:20px; }
+    .stat { background: white; border-radius:16px; padding: 16px; text-align:center; box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
+    .stat strong { display:block; font-size:1.2rem; color: var(--blue); }
+    .reviews { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:16px; }
+    .review { background: var(--card); border-radius:18px; padding:16px; box-shadow:0 8px 20px rgba(0,0,0,0.05); }
+    footer { background: #0f172a; color:#e2e8f0; padding:24px; text-align:center; margin-top:24px; }
+
+    @media (max-width: 900px) { .hero, .cards, .reviews, .stats { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .nav { justify-content:center; } .search-form { grid-template-columns:1fr; } .hero { padding-top: 36px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🚌 CityRide Bus Booking</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">Passenger Dashboard</a>
+        <a href="blossom3.html">Admin Panel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Book your next journey with comfort, safety, and effortless planning.</h1>
+        <p>Search routes, compare bus types, reserve seats, and manage bookings in a few clicks from any device.</p>
+        <div class="actions">
+          <a class="btn" href="blossom2.html">Book a Ticket</a>
+          <a class="btn secondary" href="blossom3.html">Open Admin Tools</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>4</strong><span>Bus Categories</span></div>
+          <div class="stat"><strong>24/7</strong><span>Support</span></div>
+          <div class="stat"><strong>99%</strong><span>On-time Service</span></div>
+          <div class="stat"><strong>4.9★</strong><span>Traveler Rating</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 class="section-title">Search Buses</h3>
+        <form class="search-form">
+          <input type="text" placeholder="From" />
+          <input type="text" placeholder="To" />
+          <input type="date" />
+          <select>
+            <option>Choose time</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+          </select>
+          <button class="btn full" type="button">Check Availability</button>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Popular Bus Categories</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Volvo Coach</h3>
+          <p>Premium comfort with reclining seats, Wi-Fi, and spacious legroom.</p>
+          <div class="price">From $18</div>
+          <ul>
+            <li>USB charging</li>
+            <li>Air conditioning</li>
+            <li>Reserved seating</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Sleeper Coach</h3>
+          <p>Ideal for long routes with private sleeping arrangements and restful travel.</p>
+          <div class="price">From $28</div>
+          <ul>
+            <li>Bed-style seating</li>
+            <li>Blankets included</li>
+            <li>Night travel support</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Express Shuttle</h3>
+          <p>Fast and affordable rides for daily commuters and short-distance travel.</p>
+          <div class="price">From $12</div>
+          <ul>
+            <li>Quick boarding</li>
+            <li>Frequent departures</li>
+            <li>Budget-friendly fares</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Traveler Feedback</h2>
+      <div class="reviews">
+        <div class="review">
+          <strong>“Easy booking and smooth travel.”</strong>
+          <p>I booked my ticket in minutes and received instant confirmation with no hassle.</p>
+        </div>
+        <div class="review">
+          <strong>“Modern dashboard and quick support.”</strong>
+          <p>The site made it simple to change my seat and track the route details on the go.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>CityRide © 2026 | Bus ticket reservations, reports, comments, and admin controls in one elegant platform.</p>
+  </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityRide | Passenger Dashboard</title>
+  <style>
+    :root { --navy: #14213d; --blue:#1d4ed8; --teal:#14b8a6; --orange:#f59e0b; --text:#243447; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Segoe UI", Tahoma, sans-serif; background:linear-gradient(135deg,#f7fbff,#eef8ff); color:var(--text); line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    header { background:rgba(255,255,255,0.95); box-shadow:0 4px 16px rgba(0,0,0,0.06); position:sticky; top:0; }
+    .nav { max-width:1200px; margin:auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .brand { color:var(--blue); font-weight:700; font-size:1.3rem; }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding:8px 12px; border-radius:999px; transition:0.3s; }
+    nav a:hover { background:#e8f2ff; color:var(--navy); }
+
+    main { max-width:1200px; margin:0 auto; padding:30px 24px 50px; }
+    .hero { background:white; border-radius:24px; padding:22px; box-shadow:0 10px 24px rgba(0,0,0,0.06); margin-bottom:20px; }
+    .hero h1 { color:var(--navy); margin-bottom:8px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    .card { background:white; border-radius:20px; padding:18px; box-shadow:0 10px 24px rgba(0,0,0,0.06); }
+    .card h2 { color:var(--blue); margin-bottom:12px; }
+    form { display:grid; gap:12px; }
+    input, select, textarea { padding:12px; border:1px solid #dce8f5; border-radius:12px; font:inherit; }
+    .btn { border:none; border-radius:999px; padding:12px 16px; background:linear-gradient(135deg,var(--blue),var(--teal)); color:white; cursor:pointer; font-weight:600; }
+    .history { margin-top:16px; display:grid; gap:10px; }
+    .item { border-left:4px solid var(--teal); padding:10px 12px; background:#f4fcfb; border-radius:8px; }
+    .pill { display:inline-block; background:#e8f7f3; color:#0f766e; padding:4px 8px; border-radius:999px; font-size:0.9rem; margin-top:6px; }
+    .notice { background:#fff7ed; border:1px solid #fde3bf; padding:12px; border-radius:12px; margin-top:14px; }
+    .small { font-size:0.95rem; color:#6b7280; margin-top:6px; }
+
+    @media (max-width: 800px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🚌 CityRide Bus Booking</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">Passenger Dashboard</a>
+        <a href="blossom3.html">Admin Panel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome back, Sara!</h1>
+      <p>Register, sign in, book bus tickets, and manage changes or cancellations from a single dashboard.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Login & Booking Form</h2>
+        <form>
+          <input type="text" placeholder="Full name" value="Sara Khan" />
+          <input type="email" placeholder="Email" value="sara@example.com" />
+          <input type="text" placeholder="Phone" value="+1 555 234 678" />
+          <input type="date" />
+          <select>
+            <option>Select route</option>
+            <option>Karachi to Lahore</option>
+            <option>Islamabad to Peshawar</option>
+            <option>Quetta to Multan</option>
+          </select>
+          <select>
+            <option>Select bus category</option>
+            <option>Volvo Coach</option>
+            <option>Sleeper Coach</option>
+            <option>Express Shuttle</option>
+          </select>
+          <textarea rows="3" placeholder="Passenger details or special requests"></textarea>
+          <button class="btn" type="button">Confirm Booking</button>
+        </form>
+        <p class="small">New users can register here and use the same form to create an account and reserve seats.</p>
+      </div>
+
+      <div class="card">
+        <h2>Booking History</h2>
+        <div class="history">
+          <div class="item">
+            <strong>Karachi → Lahore • 12 Jul 2026</strong>
+            <div class="pill">Confirmed</div>
+          </div>
+          <div class="item">
+            <strong>Islamabad → Peshawar • 02 Jun 2026</strong>
+            <div class="pill">Completed</div>
+          </div>
+          <div class="item">
+            <strong>Multan → Quetta • 18 Apr 2026</strong>
+            <div class="pill">Cancelled</div>
+          </div>
+        </div>
+        <div class="notice">
+          You can change or cancel your ticket up to 3 days before departure. Seat availability and schedules are updated instantly.
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityRide | Admin Control Panel</title>
+  <style>
+    :root { --navy:#14213d; --blue:#1d4ed8; --teal:#14b8a6; --orange:#f59e0b; --text:#243447; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Segoe UI", Tahoma, sans-serif; background:linear-gradient(135deg,#f7fbff,#eef8ff); color:var(--text); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    header { background:rgba(255,255,255,0.95); box-shadow:0 4px 16px rgba(0,0,0,0.06); position:sticky; top:0; }
+    .nav { max-width:1200px; margin:auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .brand { color:var(--blue); font-weight:700; font-size:1.3rem; }
+    nav { display:flex; gap:14px; flex-wrap:wrap; }
+    nav a { padding:8px 12px; border-radius:999px; transition:0.3s; }
+    nav a:hover { background:#e8f2ff; color:var(--navy); }
+    main { max-width:1200px; margin:0 auto; padding:30px 24px 50px; }
+    .hero { background:white; border-radius:24px; padding:22px; box-shadow:0 10px 24px rgba(0,0,0,0.06); margin-bottom:20px; }
+    .hero h1 { color:var(--navy); margin-bottom:8px; }
+    .grid { display:grid; gap:18px; grid-template-columns: 1fr 1fr; }
+    .card { background:white; border-radius:20px; padding:18px; box-shadow:0 10px 24px rgba(0,0,0,0.06); }
+    .card h2 { color:var(--blue); margin-bottom:10px; }
+    .list { display:grid; gap:10px; }
+    .item { border:1px solid #dbeafe; border-radius:12px; padding:12px; }
+    .pill { display:inline-block; background:#e8f2ff; color:var(--blue); padding:4px 8px; border-radius:999px; font-size:0.9rem; margin-top:6px; }
+    .pages { display:grid; gap:10px; }
+    .page-item { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #eef4fb; }
+    .btn { border:none; border-radius:999px; padding:10px 14px; background:linear-gradient(135deg,var(--blue),var(--teal)); color:white; cursor:pointer; }
+    .highlight { color:var(--orange); font-weight:700; }
+
+    @media (max-width: 800px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="blossom1.html" class="brand">🚌 CityRide Bus Booking</a>
+      <nav>
+        <a href="blossom1.html">Home</a>
+        <a href="blossom2.html">Passenger Dashboard</a>
+        <a href="blossom3.html">Admin Panel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Administrator Control Panel</h1>
+      <p>Maintain bus categories, update schedules and seat availability, manage users, and generate reports from one place.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Bus & Schedule Management</h2>
+        <div class="list">
+          <div class="item">
+            <strong>Volvo Coach</strong>
+            <div class="pill">Seats: 38 • Price: $18</div>
+          </div>
+          <div class="item">
+            <strong>Sleeper Coach</strong>
+            <div class="pill">Seats: 24 • Price: $28</div>
+          </div>
+          <div class="item">
+            <strong>Express Shuttle</strong>
+            <div class="pill">Seats: 42 • Price: $12</div>
+          </div>
+          <div class="item">
+            <strong>Luxury Bus</strong>
+            <div class="pill">Seats: 30 • Price: $22</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Admin Actions</h2>
+        <div class="pages">
+          <div class="page-item"><span>Manage Registered Users</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>Update Bus Information</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>Manage Comments</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>Generate Reports</span><button class="btn">Edit</button></div>
+          <div class="page-item"><span>Static Pages & Privacy Policy</span><button class="btn">Edit</button></div>
+        </div>
+        <p class="highlight">Admin can cancel bookings, update bus details, and oversee the full system.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
